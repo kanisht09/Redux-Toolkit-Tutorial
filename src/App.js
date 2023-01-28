@@ -9,15 +9,15 @@ import Modal from "./components/Modal";
 function App() {
   const { cartItems, isLoading } = useSelector((state) => state.cart);
   const { isOpen } = useSelector((state) => state.modal);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(calculateTotals());
-  }, [cartItems]);
+  }, [cartItems, dispatch]);
 
-  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCartItems());
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return (
